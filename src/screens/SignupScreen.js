@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Text, Input, Button } from 'react-native-elements';
 import Spacer from '../components/Spacer';
@@ -7,8 +7,10 @@ import Spacer from '../components/Spacer';
 const SignupScreen = ({ navigation }) => {
 
   return (
-      <>
-        <Text h3>Sign Up for Tracker</Text>
+      <View style={styles.container}>
+        <Spacer>
+          <Text h3 style={styles.text}>Sign Up for Tracker</Text>
+        </Spacer>
         <Spacer>
           <Input
               placeholder='your@email.com'
@@ -48,13 +50,32 @@ const SignupScreen = ({ navigation }) => {
               title={'Sign Up'}
           />
         </Spacer>
-      </>
+      </View>
   );
 };
 
+// SignupScreen.navigationOptions = ({ navigation }) => {
+//   return {
+//     header: null, // This indicates that in this screen don't show header.
+//   }
+// };
+// Above method also correct, only scenario we need to assign a function to the
+// SignupScreen.navigationOptions instead of the object as follows, when we need to
+// access the navigation object.
+
+
+SignupScreen.navigationOptions = {
+  header: null,
+};
+
 const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    marginBottom: 200,
+  },
   text: {
-    fontSize: 48,
+    textAlign: 'center',
   },
   leftIcon: {
     marginRight: 10,
