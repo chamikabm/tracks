@@ -45,7 +45,7 @@ const SignupScreen = ({ navigation }) => {
               value={password}
               onChangeText={setPassword}
               autoCapitalize={'none'}
-              autoCorrect={false}
+              autoCorrect={false} // This will disable the device saved passwords.
               leftIconContainerStyle={styles.leftIcon}
               secureTextEntry={true}
           />
