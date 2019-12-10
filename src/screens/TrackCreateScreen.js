@@ -1,5 +1,5 @@
 import '../test/mockLocation';
-import React, { useContext } from 'react';
+import React, { useContext, useCallback } from 'react';
 import { StyleSheet } from 'react-native';
 import { SafeAreaView, withNavigationFocus } from 'react-navigation';
 import { Text } from 'react-native-elements';
@@ -12,9 +12,13 @@ const TrackCreateScreen = ({ isFocused }) => {
   const { state, addLocation } = useContext(LocationContext);
   // const [error] = useLocation((location) => addLocation(location));
   // We can simplify the call as follows.
-  const [ error ] = useLocation(isFocused, (location) => {
+  const callback = useCallback((location) => {
     addLocation(location, state.recording);
-  });
+  }, [state.recording]);
+  // In the above `useCallback` hook , it will look for `state.recording` variable
+  // value changes and if it got change, then `useCallback` will rebuild the callable,
+  // which solve the stale call back issue.
+  const [ error ] = useLocation(isFocused, callback);
 
   return (
       <SafeAreaView forceInset={{ top: 'always' }}>

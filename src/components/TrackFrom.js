@@ -5,15 +5,17 @@ import { Context as LocationContext } from '../context/LocationContext';
 
 const TrackFrom = () => {
   const {
-    state: { name, recording },
+    state: { name, recording, locations },
     startRecording,
     stopRecording,
     changeName
   } = useContext(LocationContext);
 
+  console.log(locations.length)
+
 
   const buttonAction = recording ? stopRecording : startRecording;
-  const buttonTitle = recording ? 'Start Recording.' : 'Stop Recording.';
+  const buttonTitle = recording ? 'Stop Recording.' : 'Start Recording.';
 
   return (
       <>
