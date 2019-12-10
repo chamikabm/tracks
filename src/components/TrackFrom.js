@@ -19,6 +19,7 @@ const TrackFrom = () => {
 
   const buttonAction = recording ? stopRecording : startRecording;
   const buttonTitle = recording ? 'Stop Recording.' : 'Start Recording.';
+  const buttonIcon = recording ? 'stop-circle' : 'location-arrow';
   const showSaveButton = !recording && locations.length;
 
   return (
@@ -34,7 +35,7 @@ const TrackFrom = () => {
           <Button
               icon={
                 <Icon
-                    name='location-arrow'
+                    name={buttonIcon}
                     size={24}
                     color='white'
                 />
