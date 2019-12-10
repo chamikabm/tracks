@@ -5,6 +5,7 @@ import { Button } from 'react-native-elements';
 import Spacer from '../components/Spacer';
 import { Context as AuthContext } from '../context/AuthContext';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { FontAwesome } from '@expo/vector-icons';
 
 const AccountScreen = () => {
   const { signout } = useContext(AuthContext);
@@ -29,6 +30,12 @@ const AccountScreen = () => {
       </SafeAreaView>
   );
 };
+
+AccountScreen.navigationOptions = {
+  title: 'Add Track',
+  tabBarIcon: <FontAwesome name={'gear'} size={20}/>
+};
+
 
 // `SafeAreaView` component will make sure that it will not let the other content
 // go beyond the available visible screen from any of the device types.
